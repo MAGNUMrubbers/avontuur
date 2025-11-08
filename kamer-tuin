@@ -1,0 +1,9 @@
+def tuin():
+    print("\nJe bent in de tuin. Een grote poort staat voor je.")
+    keuze = input("Wil je proberen de poort te openen? (ja/nee): ").lower()
+    if keuze == "ja":
+        print("De sleutel past! Je bent vrij!")
+        return "gewonnen"
+    else:
+        print("Je blijft in de tuin rondlopen.")
+        return "tuin"
