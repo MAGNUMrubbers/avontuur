@@ -1,0 +1,37 @@
+from kamers.hal import hal
+from kamers.bibliotheek import bibliotheek
+from kamers.kelder import kelder
+from kamers.toren import toren
+from kamers.tuin import tuin
+
+def start_spel():
+    print("Welkom bij het Avontuur!")
+    print("Je bevindt je in een mysterieus kasteel met 5 kamers.")
+    print("Vind de uitgang... of word opgesloten voor eeuwig!")
+
+    huidige_kamer = "hal"
+    spel_bezig = True
+
+    while spel_bezig:
+        if huidige_kamer == "hal":
+            huidige_kamer = hal()
+        elif huidige_kamer == "bibliotheek":
+            huidige_kamer = bibliotheek()
+        elif huidige_kamer == "kelder":
+            huidige_kamer = kelder()
+        elif huidige_kamer == "toren":
+            huidige_kamer = toren()
+        elif huidige_kamer == "tuin":
+            huidige_kamer = tuin()
+        elif huidige_kamer == "gewonnen":
+            print("🎉 Je hebt gewonnen! Goed gedaan!")
+            spel_bezig = False
+        elif huidige_kamer == "verloren":
+            print("💀 Je bent verloren... beter geluk de volgende keer.")
+            spel_bezig = False
+        else:
+            print("Onbekende kamer, einde spel.")
+            spel_bezig = False
+
+if __name__ == "__main__":
+    start_spel()
