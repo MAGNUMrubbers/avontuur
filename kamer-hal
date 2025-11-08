@@ -1,0 +1,13 @@
+def hal():
+    print("\nJe staat in de grote hal van het kasteel.")
+    print("Er zijn deuren naar de bibliotheek, de kelder en de tuin.")
+    keuze = input("Waar wil je heen? (bibliotheek/kelder/tuin): ").lower()
+    if keuze == "bibliotheek":
+        return "bibliotheek"
+    elif keuze == "kelder":
+        return "kelder"
+    elif keuze == "tuin":
+        return "tuin"
+    else:
+        print("Ongeldige keuze.")
+        return "hal"
