@@ -1,0 +1,15 @@
+def toren():
+    print("\nJe klimt omhoog naar de toren.")
+    print("Bovenin zie je een kist en een raam met uitzicht.")
+    keuze = input("Wat doe je? (open kist/spring uit raam/terug): ").lower()
+    if keuze == "open kist":
+        print("Je vindt een sleutel! Misschien opent die de uitgang...")
+        return "tuin"
+    elif keuze == "spring uit raam":
+        print("Je valt naar beneden...")
+        return "verloren"
+    elif keuze == "terug":
+        return "bibliotheek"
+    else:
+        print("Ongeldige keuze.")
+        return "toren"
