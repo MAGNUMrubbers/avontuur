@@ -1,0 +1,12 @@
+def kelder():
+    print("\nJe daalt af naar de donkere kelder...")
+    print("Er zit iets te bewegen in de schaduw...")
+    keuze = input("Wil je vluchten of onderzoeken? (vluchten/onderzoeken): ").lower()
+    if keuze == "vluchten":
+        return "hal"
+    elif keuze == "onderzoeken":
+        print("Een monster springt op je af!")
+        return "verloren"
+    else:
+        print("Je twijfelt te lang...")
+        return "verloren"
