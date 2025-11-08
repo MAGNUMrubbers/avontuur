@@ -1,0 +1,11 @@
+def bibliotheek():
+    print("Je bent in de bibliotheek. Overal liggen oude boeken.")
+    print("Er is een ladder naar de toren en een deur terug naar de hal.")
+    keuze = input("Wat doe je? (toren/hal): ").lower()
+    if keuze == "toren":
+        return "toren"
+    elif keuze == "hal":
+        return "hal"
+    else:
+        print("Ongeldige keuze.")
+        return "bibliotheek"
