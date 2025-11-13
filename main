@@ -12,17 +12,25 @@ def start_spel():
     huidige_kamer = "hal"
     spel_bezig = True
 
+    # State-variabelen
+    state = {
+        "heeft_sleutel": False,
+        "heeft_mes": False,
+        "monster_verslagen": False,
+        "deur_geopend": False
+    }
+
     while spel_bezig:
         if huidige_kamer == "hal":
-            huidige_kamer = hal()
+            huidige_kamer = hal(state)
         elif huidige_kamer == "bibliotheek":
-            huidige_kamer = bibliotheek()
+            huidige_kamer = bibliotheek(state)
         elif huidige_kamer == "kelder":
-            huidige_kamer = kelder()
+            huidige_kamer = kelder(state)
         elif huidige_kamer == "toren":
-            huidige_kamer = toren()
+            huidige_kamer = toren(state)
         elif huidige_kamer == "tuin":
-            huidige_kamer = tuin()
+            huidige_kamer = tuin(state)
         elif huidige_kamer == "gewonnen":
             print("🎉 Je hebt gewonnen! Goed gedaan!")
             spel_bezig = False
