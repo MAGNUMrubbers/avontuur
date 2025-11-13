@@ -1,9 +1,22 @@
-def tuin():
+def tuin(state):
     print("\nJe bent in de tuin. Een grote poort staat voor je.")
+    if state["deur_geopend"]:
+        print("De poort staat open. Je kunt vertrekken!")
+        keuze = input("Wil je vertrekken? (ja/nee): ").lower()
+        if keuze == "ja":
+            return "gewonnen"
+        else:
+            return "tuin"
+
     keuze = input("Wil je proberen de poort te openen? (ja/nee): ").lower()
     if keuze == "ja":
-        print("De sleutel past! Je bent vrij!")
-        return "gewonnen"
+        if state["heeft_sleutel"]:
+            print("De sleutel past! De poort gaat open!")
+            state["deur_geopend"] = True
+            return "tuin"
+        else:
+            print("De poort zit op slot. Je hebt een sleutel nodig.")
+            return "tuin"
     else:
-        print("Je blijft in de tuin rondlopen.")
+        print("Je blijft wat rondlopen in de tuin.")
         return "tuin"
