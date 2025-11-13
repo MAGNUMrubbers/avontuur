@@ -1,8 +1,19 @@
-def bibliotheek():
-    print("Je bent in de bibliotheek. Overal liggen oude boeken.")
+def bibliotheek(state):
+    print("\nJe bent in de bibliotheek. Overal liggen oude boeken.")
     print("Er is een ladder naar de toren en een deur terug naar de hal.")
-    keuze = input("Wat doe je? (toren/hal): ").lower()
-    if keuze == "toren":
+    if not state["heeft_sleutel"]:
+        print("Een oud boek ligt open met iets glimmends erin...")
+
+    keuze = input("Wat doe je? (onderzoek boek/toren/hal): ").lower()
+
+    if keuze == "onderzoek boek":
+        if not state["heeft_sleutel"]:
+            print("Je vindt een kleine sleutel tussen de pagina’s!")
+            state["heeft_sleutel"] = True
+        else:
+            print("Het boek is leeg.")
+        return "bibliotheek"
+    elif keuze == "toren":
         return "toren"
     elif keuze == "hal":
         return "hal"
