@@ -1,21 +1,39 @@
 def kelder(state):
     print("\nJe daalt af naar de donkere kelder...")
-    print("Er beweegt iets in de schaduw...")
-    if not state["monster_verslagen"]:
-        keuze = input("Wil je vluchten of het monster aanvallen? (vluchten/aanvallen): ").lower()
-        if keuze == "vluchten":
-            return "hal"
-        elif keuze == "aanvallen":
-            if state["heeft_mes"]:
-                print("Je verslaat het monster met je mes!")
-                state["monster_verslagen"] = True
-                return "kelder"
-            else:
-                print("Je hebt geen wapen... het monster grijpt je!")
-                return "verloren"
+    print("Er zit iets te bewegen in de schaduw...")
+
+    # Soms vind je een wapen
+    if not state["heeft_mes"]:
+        print("Je ziet een oud mes op de vloer liggen.")
+        pakken = input("Wil je het mes oppakken? (ja/nee): ").lower()
+        if pakken == "ja":
+            print("Je hebt het mes gepakt.")
+            state["heeft_mes"] = True
+
+    if not state["heeft_bijl"]:
+        print("In een hoek staat een roestige bijl.")
+        pakken = input("Wil je de bijl oppakken? (ja/nee): ").lower()
+        if pakken == "ja":
+            print("Je hebt de bijl gepakt.")
+            state["heeft_bijl"] = True
+
+    keuze = input("Wil je vluchten of onderzoeken? (vluchten/onderzoeken): ").lower()
+
+    if keuze == "vluchten":
+        return "hal"
+
+    elif keuze == "onderzoeken":
+        print("Een monster springt op je af!")
+
+        # Je kunt nu het monster verslaan
+        if state["heeft_mes"] or state["heeft_bijl"]:
+            print("Je gebruikt je wapen en verslaat het monster!")
+            state["monster_verslagen"] = True
+            return "kelder"
         else:
-            print("Je twijfelt te lang...")
+            print("Je hebt geen wapen...")
             return "verloren"
+
     else:
-        print("Het karkas van het monster ligt levenloos op de grond.")
-        return input("Waarheen nu? (hal): ").lower() or "hal"
+        print("Je twijfelt te lang...")
+        return "verloren"
