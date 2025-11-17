@@ -4,13 +4,20 @@ def toren(state):
     keuze = input("Wat doe je? (open kist/spring uit raam/terug): ").lower()
 
     if keuze == "open kist":
-        print("De kist is leeg... behalve een briefje: 'De sleutel opent de vrijheid.'")
-        return "bibliotheek"
+        if not state["heeft_sleutel"]:
+            print("Je vindt een sleutel! Misschien opent die de uitgang...")
+            state["heeft_sleutel"] = True
+        else:
+            print("De kist is al leeg.")
+        return "tuin"
+
     elif keuze == "spring uit raam":
         print("Je valt naar beneden...")
         return "verloren"
+
     elif keuze == "terug":
         return "bibliotheek"
+
     else:
         print("Ongeldige keuze.")
         return "toren"
