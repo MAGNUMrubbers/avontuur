@@ -12,12 +12,11 @@ def start_spel():
     huidige_kamer = "hal"
     spel_bezig = True
 
-    # State-variabelen
     state = {
         "heeft_sleutel": False,
         "heeft_mes": False,
-        "monster_verslagen": False,
-        "deur_geopend": False
+        "heeft_bijl": False,
+        "monster_verslagen": False
     }
 
     while spel_bezig:
@@ -35,7 +34,7 @@ def start_spel():
             print("🎉 Je hebt gewonnen! Goed gedaan!")
             spel_bezig = False
         elif huidige_kamer == "verloren":
-            print("💀 Je bent verloren... beter geluk de volgende keer.")
+            print("💀 Je hebt verloren... beter geluk de volgende keer.")
             spel_bezig = False
         else:
             print("Onbekende kamer, einde spel.")
