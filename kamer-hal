@@ -1,20 +1,9 @@
 def hal(state):
     print("\nJe staat in de grote hal van het kasteel.")
     print("Er zijn deuren naar de bibliotheek, de kelder en de tuin.")
-    if not state["heeft_mes"]:
-        print("Op een tafel ligt een oud mes...")
+    keuze = input("Waar wil je heen? (bibliotheek/kelder/tuin): ").lower()
 
-    keuze = input("Wat wil je doen? (pak mes/bibliotheek/kelder/tuin): ").lower()
-
-    if keuze == "pak mes":
-        if not state["heeft_mes"]:
-            state["heeft_mes"] = True
-            print("Je pakt het mes. Het voelt zwaar en scherp aan.")
-        else:
-            print("Je hebt het mes al.")
-        return "hal"
-
-    elif keuze == "bibliotheek":
+    if keuze == "bibliotheek":
         return "bibliotheek"
     elif keuze == "kelder":
         return "kelder"
